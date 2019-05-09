@@ -15,7 +15,7 @@ line, = ax.plot(x, y[0])
 
 
 def animate(i):
-    k="{0:.2f}".format((2/xt)*(i+1))
+    k="{0:.2f}".format((2/xt)*((i+1)*0.5))
     line.set_ydata(y[i])
     ax.set_title("Tiempo: " + str(k)+ " segundos")
     return line,
@@ -25,7 +25,7 @@ def animate(i):
 def init():
     
     ax.set_xlim(0, 1)
-    ax.set_ylim(-0.5, 0.5)
+    ax.set_ylim(-0.05, 0.05)
     ax.set_xlabel("Posicion [metros]")
     ax.set_ylabel("U")
     plt.grid(True)
@@ -33,5 +33,5 @@ def init():
     return line,
 
 ani = animation.FuncAnimation(fig, animate, init_func=init,
-                              interval=100,frames=range(xt), blit=True)
+                              interval=100,frames=range(xt*2), repeat=True)
 ani.save("LAX.gif")    

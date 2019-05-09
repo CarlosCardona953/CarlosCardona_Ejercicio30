@@ -8,19 +8,19 @@ using namespace std;
 
 int main(){
     ofstream outfile;
-    float l=1;
-    float tmax=2;
+  
+    float tmax=2.0;
     float dx=0.01;
     float dt=0.01;
-    int x=l/dx;
+    int x=100;
     int t=tmax/dt;
-    float c=0.2;
+    float c=1.0;
     float beta=c*dt/dx;
     double u[x];
     double u_new[x];
     
     for(int i=0;i<x;i++){
-        u[i]=sin(4*M_PI*i*dx)/2;
+        u[i]=sin(4*M_PI*i*dx)/20;
     }
     
     
@@ -28,7 +28,7 @@ int main(){
    outfile.open("lax.dat");
         
     for (int j=0;j<t;j++){
-        for(int i=1;i<x-1;i++){
+        for(int i=0;i<x-1;i++){
              
             
             u_new[i]=u[i]- (beta/4)*(pow(u[i+1],2)-pow(u[i-1],2)) +(pow(beta,2)/8)*( (u[i+1]+u[i])*(pow(u[i+1],2)-pow(u[i],2)) -(u[i]+u[i-1])*(pow(u[i],2)-pow(u[i-1],2)));
