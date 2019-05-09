@@ -15,7 +15,7 @@ line, = ax.plot(x, y[0])
 
 
 def animate(i):
-    k="{0:.2f}".format((2/xt)*i)
+    k="{0:.2f}".format((2/xt)*(i+1))
     line.set_ydata(y[i])
     ax.set_title("Tiempo: " + str(k)+ " segundos")
     return line,
